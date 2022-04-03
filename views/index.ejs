@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>CYOA - New Testament</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">                
+                <!-- Page content-->
+                <div style="background-color: rgb(4, 15, 78); width: 100%; padding: 30px 0px 30px 0px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                    <div class="row">
+                        <div class="col-7">
+                            <h2 class="text-center text-white text-uppercase">Choose your own New Testament Adventure</h2>
+                        </div>                       
+                        <div class="col-5">
+                            <h3 class="text-center text-white text-uppercase">Ian Vernon Cole</h3>
+                        </div>
+                      </div>                    
+                </div>
+                <br/>
+                <div class="container-fluid">                    
+                    <div class="row">
+                        <div class="col-2 large-screen-only"></div>
+                        <div id="main" class="col-8 fill-on-large" style="border-radius: 10px; background-color: rgba(194, 194, 194, 0.637); min-height: 500px;">
+                            <br>
+                            <h3 id="title" class="text-center"> Beginning scene of the Beginning that has beginning stuff in it. </h3>
+                            <img id="imageShown" src="<%= sObject.Image %>" style="max-width: 100%; padding: 5px 5px 5px 5px;">
+                            <br><br>
+                            <p id="dialogText" class="text-center"> <%= sObject.Prompt %> </p>
+                            <div id="choices">
+                                <% for (var i = 0; i < aTable.length; i++) { %>
+                                <a href = "/Situation/<%= aTable[i].LeadsTo %>" class="button-dialog btn">
+                                    <%= aTable[i].Prompt %>
+                                </a>
+                                <br>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="col-2 large-screen-only"></div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="./js/scripts.js"></script>
+    </body>
+</html>

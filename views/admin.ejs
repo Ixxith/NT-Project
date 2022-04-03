@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Admin Page</title>
+    <div>
+        <h3> Situations </h3>
+        <table>
+            <tr>
+                <th>Id</th><th>Prompt</th><th>Image</th><th></th>
+            </tr>
+            
+            <% for (var i = 0; i < sTable.length; i++) { %>
+                <tr>
+                <td><%= sTable[i].SituationId %></td>
+                <td><%= sTable[i].Prompt %></td>
+                <td><%= sTable[i].Image %></td>
+                <td><a href="./Delete/Situation/<%= sTable[i].SituationId %>">Delete</a></td>
+                </tr>    
+            <% } %>
+        </table>
+        <h3>Add a new one</h3>
+        <form action="/add/Situation" method="post">
+            <label for="SituationId">SituationId:</label>
+            <input type="text" id="SituationId" name="SituationId"><br><br>
+            <label for="Prompt">Prompt:</label>
+            <input type="text" id="Prompt" name="Prompt"><br><br>
+            <label for="Image">Image:</label>
+            <input type="text" id="Image" name="Image"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <h3> Answers </h3>
+        <table>
+            <tr>
+                <th>Id</th><th>Prompt</th><th>SituationId</th><th>LeadsTo</th><th></th>
+            </tr>
+            
+            <% for (var i = 0; i < aTable.length; i++) { %>
+                <tr>
+                <td><%= aTable[i].AnswerId %></td>
+                <td><%= aTable[i].Prompt %></td>
+                <td><%= aTable[i].SituationId %></td>
+                <td><%= aTable[i].LeadsTo %></td>
+                <td><a href="./Delete/Answer/<%= aTable[i].AnswerId %>">Delete</a></td>
+                </tr>    
+            <% } %>
+        </table>
+        <h3>Add a new one</h3>
+        <form action="/add/Answer" method="post">
+            <label for="AnswerId">AnswerId:</label>
+            <input type="text" id="AnswerId" name="AnswerId"><br><br>
+            <label for="Prompt">Prompt:</label>
+            <input type="text" id="Prompt" name="Prompt"><br><br>
+            <label for="SituationId">SituationId:</label>
+            <input type="text" id="SituationId" name="SituationId"><br><br>
+            <label for="LeadsTo">LeadsTo:</label>
+            <input type="text" id="LeadsTo" name="LeadsTo"><br><br>
+            <input type="submit" value="Submit">        
+        <br>
+    </div>  
+</head>
+<body>
+    
+</body>
+</html>
