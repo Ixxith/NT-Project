@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "connect-busboy": "^1.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16",
+    "fs": "^0.0.1-security",
     "knex": "^0.21.5",
     "nodemon": "^2.0.15",
     "sqlite3": "^4.2.0"

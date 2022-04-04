@@ -1,5 +1,6 @@
 //Gives access to the express library
 let express = require("express");
+var fs = require("fs");
 //creates an express application object
 let app = express();
 //use this variable for our port communication
@@ -52,6 +53,26 @@ app.get("/", (req,res) => {
 });
 
 // Called when the main directory of the webpage is called
+app.get("/Situation/:id", (req,res) => {
+    //Renders the database as a table sorted by SongName  
+    knex('Situation').where('SituationId',req.params.id).first().then(situation => {
+      // Render the index ejs page, and send it all records in the Songs database
+      knex('Answer').where('SituationId',situation.SituationId).then(answers => {
+           res.render("index", {sObject: situation, aTable: answers});
+       }).catch(err => {
+           // If an error occurs, logit
+           console.log(err);
+           res.status(500).json({err});
+       }); 
+    }).catch(err => {
+        // If an error occurs, logit
+           console.log(err);
+           res.status(500).json({err});
+       });
+   });
+
+
+// Called when the main directory of the webpage is called
 app.get("/admin", (req,res) => {
     //Renders the database as a table sorted by SongName  
     knex('Situation').then(situations => {
@@ -86,9 +107,22 @@ app.get('/Delete/:type/:id', (req,res) => {
 
 
 app.post('/add/:item', (req,res)=>{
-    knex(req.params.item).insert(req.body).then(student => {
+    knex(req.params.item).insert(req.body).then(item => {
         res.redirect('/admin');
     });
+});
+
+
+app.post("/upload/:item", function(req, res){
+    console.log(req.body.jsontext)
+    var json = JSON.parse(req.body.jsontext);
+        json.forEach(function(obj) {
+            knex(req.params.item).insert(obj).then(item => {
+                
+            });
+        })
+  
+    res.redirect('/admin');
 });
 
 //Display the port number for the node server

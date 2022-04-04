@@ -4,11 +4,17 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Admin Page</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    
+    <div id="page-content-wrapper" class="p-3" >    
     <div>
         <h3> Situations </h3>
         <table>
             <tr>
-                <th>Id</th><th>Prompt</th><th>Image</th><th></th>
+                <th>Id</th><th>Prompt</th><th>Image</th><th>Title</th><th></th>
             </tr>
             
             <% for (var i = 0; i < sTable.length; i++) { %>
@@ -16,6 +22,7 @@
                 <td><%= sTable[i].SituationId %></td>
                 <td><%= sTable[i].Prompt %></td>
                 <td><%= sTable[i].Image %></td>
+                <td><%= sTable[i].Title %></td>
                 <td><a href="./Delete/Situation/<%= sTable[i].SituationId %>">Delete</a></td>
                 </tr>    
             <% } %>
@@ -28,7 +35,15 @@
             <input type="text" id="Prompt" name="Prompt"><br><br>
             <label for="Image">Image:</label>
             <input type="text" id="Image" name="Image"><br><br>
+            <label for="Image">Title:</label>
+            <input type="text" id="Title" name="Title"><br><br>
             <input type="submit" value="Submit">
+        </form>
+        <h3>Upload JSON</h3>
+        <form action="/upload/Situation" method="post">
+            <label for="jsontext">Input JSON:</label><br>
+            <textarea rows="4" cols="50" id="jsontext" name="jsontext"></textarea><br><br>
+            <input type="submit">
         </form>
     </div>
     <div>
@@ -59,10 +74,17 @@
             <label for="LeadsTo">LeadsTo:</label>
             <input type="text" id="LeadsTo" name="LeadsTo"><br><br>
             <input type="submit" value="Submit">        
-        <br>
-    </div>  
-</head>
-<body>
-    
+        </form>
+            <br>
+        <h3>Upload JSON</h3>
+        <form action="/upload/Answer" method="post">
+            <label for="jsontext">Input JSON:</label><br>
+            <textarea rows="4" cols="50" id="jsontext" name="jsontext"></textarea><br><br>
+            <input type="submit">
+        </form>
+    </div>
+    </div>
+</div>
 </body>
+
 </html>
