@@ -40,12 +40,13 @@
                             <p id="dialogText" class="text-center"> <%= sObject.Prompt %> </p>
                             <div id="choices">
                                 <% for (var i = 0; i < aTable.length; i++) { %>
-                                <a href = "/Situation/<%= aTable[i].LeadsTo %>" class="button-dialog btn">
+                                <a href = "/Situation/<%= aTable[i].LeadsTo %>" data-cost="<%= aTable[i].Cost %>" data-points="<%= aTable[i].Points%>" class="button-dialog dialog-choice btn">
                                     <%= aTable[i].Prompt %>
                                 </a>
                                 <br>
                                 <% } %>
                             </div>
+                            <a href = "/" id = "resetbutton"  class="button-dialog btn"> Reset </a>
                         </div>
                         <div class="col-2 large-screen-only"></div>
                       </div>

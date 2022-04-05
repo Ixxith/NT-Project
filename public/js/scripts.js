@@ -23,4 +23,29 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    //Get a reference to the link on the page
+    // with an id of "mylink"
+    score = localStorage.getItem("Score")
+    if (score == null) { localStorage.setItem("Score", 0); score = 0; }
+    var buttons = document.getElementsByClassName('dialog-choice');
+    console.log(score)    
+    for (var i=0; i < buttons.length; i++) {
+        if (parseInt(buttons[i].getAttribute('data-cost')) > score) {
+            buttons[i].style.display = "none"
+        } else {
+            
+            buttons[i].onclick = function() {
+                localStorage.setItem("Score", localStorage.getItem("Score") + parseInt(buttons[i].getAttribute('data-points')));
+                return true;
+            }
+        }
+        
+    }
+     
+    let resetB = document.getElementById('resetbutton');
+    resetB.onclick = function() {
+        localStorage.setItem("Score", 0)
+        return true;
+    }
+
 });
