@@ -50,7 +50,7 @@
         <h3> Answers </h3>
         <table>
             <tr>
-                <th>Id</th><th>Prompt</th><th>SituationId</th><th>LeadsTo</th><th></th>
+                <th>Id</th><th>Prompt</th><th>SituationId</th><th>LeadsTo</th><th>Points</th><th>Cost</th><th></th>
             </tr>
             
             <% for (var i = 0; i < aTable.length; i++) { %>
@@ -59,6 +59,8 @@
                 <td><%= aTable[i].Prompt %></td>
                 <td><%= aTable[i].SituationId %></td>
                 <td><%= aTable[i].LeadsTo %></td>
+                <td><%= aTable[i].Points %></td>
+                <td><%= aTable[i].Cost %></td>
                 <td><a href="./Delete/Answer/<%= aTable[i].AnswerId %>">Delete</a></td>
                 </tr>    
             <% } %>
